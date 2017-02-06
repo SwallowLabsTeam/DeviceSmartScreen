@@ -1,0 +1,159 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "net_param": {
+            "type": "object",
+            "properties": {
+                "front_end": {
+                    "type": "array",
+                    "uniqueItems": True,
+                    "items": {
+                        "type": "integer",
+                        "minimum": 5000,
+                        "maximum": 6000
+                    }
+                },
+                "back_end": {
+                    "type": "array",
+                    "uniqueItems": True,
+                    "items": {
+                        "type": "integer",
+                        "minimum": 6000,
+                        "maximum": 7000
+                    }
+                },
+                "ip_add": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "format": "ipv4"
+                    }
+                }
+            },
+            "required": [
+                "front_end",
+                "back_end",
+                "ip_add"
+            ]
+        }
+    },
+    "log_param": {
+      "type": "object",
+      "properties": {
+        "broker": {
+          "type": "object",
+          "properties": {
+            "host": {
+                "type": "string",
+                "format": "ipv4"
+            },
+            "port": {
+                "type": "integer"
+            },
+            "level": {
+              "type": "string",
+                "enum":["DEBUG", "INFO", "WARNING","ERROR", "CRITICAL"]
+            },
+            "facility": {
+              "type": "string",
+                "enum":["local0"]
+            },
+            "format": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "host",
+            "port",
+            "level",
+            "facility",
+            "format"
+          ]
+        },
+        "capsule": {
+          "type": "object",
+          "properties": {
+            "host": {
+              "type": "string",
+                "format": "ipv4"
+            },
+            "port": {
+              "type": "integer"
+            },
+            "level": {
+              "type": "string",
+                "enum":["DEBUG", "INFO", "WARNING","ERROR", "CRITICAL"]
+            },
+            "facility": {
+              "type": "string",
+                "enum":["local2"]
+            },
+            "format": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "host",
+            "port",
+            "level",
+            "facility",
+            "format"
+          ]
+        },
+        "client": {
+          "type": "object",
+          "properties": {
+            "host": {
+              "type": "string",
+                "format": "ipv4"
+            },
+            "port": {
+              "type": "integer"
+            },
+            "level": {
+              "type": "string",
+                "enum":["DEBUG", "INFO", "WARNING","ERROR", "CRITICAL"]
+            },
+            "facility": {
+              "type": "string",
+                "enum":["local1"]
+            },
+            "format": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "host",
+            "port",
+            "level",
+            "facility",
+            "format"
+          ]
+        }
+      },
+      "required": [
+        "broker",
+        "capsule",
+        "client"
+      ]
+    },
+
+    "snapshot_param":
+    {
+        "type": "object",
+        "properties":
+        {
+            "path":
+            {
+                "type": "string"
+            }
+        }
+
+    },
+    "required": [
+        "net_param",
+        "log_param",
+        "snapshot_param"
+    ]
+}

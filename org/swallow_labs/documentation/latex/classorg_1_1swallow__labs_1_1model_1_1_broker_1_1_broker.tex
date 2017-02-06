@@ -1,0 +1,162 @@
+\hypertarget{classorg_1_1swallow__labs_1_1model_1_1_broker_1_1_broker}{}\section{org.\+swallow\+\_\+labs.\+model.\+Broker.\+Broker Class Reference}
+\label{classorg_1_1swallow__labs_1_1model_1_1_broker_1_1_broker}\index{org.\+swallow\+\_\+labs.\+model.\+Broker.\+Broker@{org.\+swallow\+\_\+labs.\+model.\+Broker.\+Broker}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classorg_1_1swallow__labs_1_1model_1_1_broker_1_1_broker_a3f870d61e6e574460540aca5099d21bc}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, id\+\_\+frontend, id\+\_\+backend)
+\item 
+def \hyperlink{classorg_1_1swallow__labs_1_1model_1_1_broker_1_1_broker_a2f4469e8372d8937c1868eab75fe8bbd}{snapshot} (self)
+\item 
+def \hyperlink{classorg_1_1swallow__labs_1_1model_1_1_broker_1_1_broker_a4f68c5eb9450d022b7705404071a87fc}{clean} (self)
+\item 
+def \hyperlink{classorg_1_1swallow__labs_1_1model_1_1_broker_1_1_broker_a05d236fef4af82a508093eb819bed2de}{send} (self, client\+\_\+id, end)
+\item 
+def \hyperlink{classorg_1_1swallow__labs_1_1model_1_1_broker_1_1_broker_a78f5728fbe5fe8489ad1238ad21d24e3}{start} (self)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classorg_1_1swallow__labs_1_1model_1_1_broker_1_1_broker_ae6ed636aa76d6b9e0002952aeb7ec1f0}{parse} (b\+\_\+client\+\_\+id, b\+\_\+capsule)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classorg_1_1swallow__labs_1_1model_1_1_broker_1_1_broker_a19b75aea4bc3ea205ab3203d0a739a75}{}{\bfseries message\+\_\+list}\label{classorg_1_1swallow__labs_1_1model_1_1_broker_1_1_broker_a19b75aea4bc3ea205ab3203d0a739a75}
+
+\item 
+\hypertarget{classorg_1_1swallow__labs_1_1model_1_1_broker_1_1_broker_a5c4a3bbe7c49f1c96b2fbed32c5a4761}{}{\bfseries id\+\_\+frontend}\label{classorg_1_1swallow__labs_1_1model_1_1_broker_1_1_broker_a5c4a3bbe7c49f1c96b2fbed32c5a4761}
+
+\item 
+\hypertarget{classorg_1_1swallow__labs_1_1model_1_1_broker_1_1_broker_a0b51a4ff2cd757eefb1f979147b73266}{}{\bfseries id\+\_\+backend}\label{classorg_1_1swallow__labs_1_1model_1_1_broker_1_1_broker_a0b51a4ff2cd757eefb1f979147b73266}
+
+\item 
+\hypertarget{classorg_1_1swallow__labs_1_1model_1_1_broker_1_1_broker_a69f6f1340002bf89c987bec9b095030b}{}{\bfseries frontend}\label{classorg_1_1swallow__labs_1_1model_1_1_broker_1_1_broker_a69f6f1340002bf89c987bec9b095030b}
+
+\item 
+\hypertarget{classorg_1_1swallow__labs_1_1model_1_1_broker_1_1_broker_ae600ed1993c03c4675c4f20177ac9128}{}{\bfseries backend}\label{classorg_1_1swallow__labs_1_1model_1_1_broker_1_1_broker_ae600ed1993c03c4675c4f20177ac9128}
+
+\item 
+\hypertarget{classorg_1_1swallow__labs_1_1model_1_1_broker_1_1_broker_aa3d2bda64c3780e855e3e9ce8ea6d4f8}{}{\bfseries poller}\label{classorg_1_1swallow__labs_1_1model_1_1_broker_1_1_broker_aa3d2bda64c3780e855e3e9ce8ea6d4f8}
+
+\item 
+\hypertarget{classorg_1_1swallow__labs_1_1model_1_1_broker_1_1_broker_a7ece99006b26876febf987fb0929f064}{}{\bfseries my\+\_\+logger}\label{classorg_1_1swallow__labs_1_1model_1_1_broker_1_1_broker_a7ece99006b26876febf987fb0929f064}
+
+\item 
+\hypertarget{classorg_1_1swallow__labs_1_1model_1_1_broker_1_1_broker_a1780f0df0ab7a9451dd0b6206748d7c4}{}{\bfseries logger}\label{classorg_1_1swallow__labs_1_1model_1_1_broker_1_1_broker_a1780f0df0ab7a9451dd0b6206748d7c4}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Class creating a broker object
+
+G{classtree}
+
+DESCRIPTION
+===========
+Create a broker
+
+RETURN
+======
+Return a broker
+
+@param id_frontend:    port number for the front-end socket
+@param id_backend:    port number for the back-end socket
+@ivar self.frontend:    front-end socket
+@ivar self.backend:    back-end socket
+@ivar self.poller:    A stateful poll object
+@ivar self.message_list:    a list containing the messages received from the clients
+                            other than the Ready message
+@type id_frontend: int
+@type id_backend: int\end{DoxyVerb}
+ 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classorg_1_1swallow__labs_1_1model_1_1_broker_1_1_broker_a3f870d61e6e574460540aca5099d21bc}{}\index{org\+::swallow\+\_\+labs\+::model\+::\+Broker\+::\+Broker@{org\+::swallow\+\_\+labs\+::model\+::\+Broker\+::\+Broker}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!org\+::swallow\+\_\+labs\+::model\+::\+Broker\+::\+Broker@{org\+::swallow\+\_\+labs\+::model\+::\+Broker\+::\+Broker}}
+\subsubsection[{\+\_\+\+\_\+init\+\_\+\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}def org.\+swallow\+\_\+labs.\+model.\+Broker.\+Broker.\+\_\+\+\_\+init\+\_\+\+\_\+ (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{id\+\_\+frontend, }
+\item[{}]{id\+\_\+backend}
+\end{DoxyParamCaption}
+)}\label{classorg_1_1swallow__labs_1_1model_1_1_broker_1_1_broker_a3f870d61e6e574460540aca5099d21bc}
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+\subsection{Member Function Documentation}
+\hypertarget{classorg_1_1swallow__labs_1_1model_1_1_broker_1_1_broker_a4f68c5eb9450d022b7705404071a87fc}{}\index{org\+::swallow\+\_\+labs\+::model\+::\+Broker\+::\+Broker@{org\+::swallow\+\_\+labs\+::model\+::\+Broker\+::\+Broker}!clean@{clean}}
+\index{clean@{clean}!org\+::swallow\+\_\+labs\+::model\+::\+Broker\+::\+Broker@{org\+::swallow\+\_\+labs\+::model\+::\+Broker\+::\+Broker}}
+\subsubsection[{clean}]{\setlength{\rightskip}{0pt plus 5cm}def org.\+swallow\+\_\+labs.\+model.\+Broker.\+Broker.\+clean (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}\label{classorg_1_1swallow__labs_1_1model_1_1_broker_1_1_broker_a4f68c5eb9450d022b7705404071a87fc}
+\begin{DoxyVerb}DESCRIPTION
+===========
+Method cleaning the message_list attribute of the broker by removing the messages that were sent
+\end{DoxyVerb}
+ \hypertarget{classorg_1_1swallow__labs_1_1model_1_1_broker_1_1_broker_ae6ed636aa76d6b9e0002952aeb7ec1f0}{}\index{org\+::swallow\+\_\+labs\+::model\+::\+Broker\+::\+Broker@{org\+::swallow\+\_\+labs\+::model\+::\+Broker\+::\+Broker}!parse@{parse}}
+\index{parse@{parse}!org\+::swallow\+\_\+labs\+::model\+::\+Broker\+::\+Broker@{org\+::swallow\+\_\+labs\+::model\+::\+Broker\+::\+Broker}}
+\subsubsection[{parse}]{\setlength{\rightskip}{0pt plus 5cm}def org.\+swallow\+\_\+labs.\+model.\+Broker.\+Broker.\+parse (
+\begin{DoxyParamCaption}
+\item[{}]{b\+\_\+client\+\_\+id, }
+\item[{}]{b\+\_\+capsule}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classorg_1_1swallow__labs_1_1model_1_1_broker_1_1_broker_ae6ed636aa76d6b9e0002952aeb7ec1f0}
+\begin{DoxyVerb}DESCRIPTION
+===========
+Method converting the b_client_id into a string and the b_capsule into a Capsule object
+@param b_client_id:    client id in bytes format
+@param b_capsule:   capsule in bytes format
+@return: return a list containing the client id as a string and the Capsule object
+@rtype: List
+@type b_client_id: Bytes
+@type b_capsule: Bytes
+\end{DoxyVerb}
+ \hypertarget{classorg_1_1swallow__labs_1_1model_1_1_broker_1_1_broker_a05d236fef4af82a508093eb819bed2de}{}\index{org\+::swallow\+\_\+labs\+::model\+::\+Broker\+::\+Broker@{org\+::swallow\+\_\+labs\+::model\+::\+Broker\+::\+Broker}!send@{send}}
+\index{send@{send}!org\+::swallow\+\_\+labs\+::model\+::\+Broker\+::\+Broker@{org\+::swallow\+\_\+labs\+::model\+::\+Broker\+::\+Broker}}
+\subsubsection[{send}]{\setlength{\rightskip}{0pt plus 5cm}def org.\+swallow\+\_\+labs.\+model.\+Broker.\+Broker.\+send (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{client\+\_\+id, }
+\item[{}]{end}
+\end{DoxyParamCaption}
+)}\label{classorg_1_1swallow__labs_1_1model_1_1_broker_1_1_broker_a05d236fef4af82a508093eb819bed2de}
+\begin{DoxyVerb}DESCRIPTION
+===========
+This method sends the capsules that contain the receiver id matching the receiver id received as parameter
+on the specified end
+@param client_id: id of the client to whom the message is sent
+@param end: this may take self.backend or self.backend
+@type client_id: string
+@type end : socket
+\end{DoxyVerb}
+ \hypertarget{classorg_1_1swallow__labs_1_1model_1_1_broker_1_1_broker_a2f4469e8372d8937c1868eab75fe8bbd}{}\index{org\+::swallow\+\_\+labs\+::model\+::\+Broker\+::\+Broker@{org\+::swallow\+\_\+labs\+::model\+::\+Broker\+::\+Broker}!snapshot@{snapshot}}
+\index{snapshot@{snapshot}!org\+::swallow\+\_\+labs\+::model\+::\+Broker\+::\+Broker@{org\+::swallow\+\_\+labs\+::model\+::\+Broker\+::\+Broker}}
+\subsubsection[{snapshot}]{\setlength{\rightskip}{0pt plus 5cm}def org.\+swallow\+\_\+labs.\+model.\+Broker.\+Broker.\+snapshot (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}\label{classorg_1_1swallow__labs_1_1model_1_1_broker_1_1_broker_a2f4469e8372d8937c1868eab75fe8bbd}
+\begin{DoxyVerb}    DESCRIPTION
+    ===========
+    Method close broker sockets and return the messages list
+\end{DoxyVerb}
+ \hypertarget{classorg_1_1swallow__labs_1_1model_1_1_broker_1_1_broker_a78f5728fbe5fe8489ad1238ad21d24e3}{}\index{org\+::swallow\+\_\+labs\+::model\+::\+Broker\+::\+Broker@{org\+::swallow\+\_\+labs\+::model\+::\+Broker\+::\+Broker}!start@{start}}
+\index{start@{start}!org\+::swallow\+\_\+labs\+::model\+::\+Broker\+::\+Broker@{org\+::swallow\+\_\+labs\+::model\+::\+Broker\+::\+Broker}}
+\subsubsection[{start}]{\setlength{\rightskip}{0pt plus 5cm}def org.\+swallow\+\_\+labs.\+model.\+Broker.\+Broker.\+start (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}\label{classorg_1_1swallow__labs_1_1model_1_1_broker_1_1_broker_a78f5728fbe5fe8489ad1238ad21d24e3}
+\begin{DoxyVerb}DESCRIPTION
+===========
+Method describing the behaviour of the broker it is the main loop in which he receives messages
+and forwards them to the appropriate peer
+\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/root/\+Pycharm\+Projects/\+Chanel\+Project/org/swallow\+\_\+labs/model/Broker.\+py\end{DoxyCompactItemize}

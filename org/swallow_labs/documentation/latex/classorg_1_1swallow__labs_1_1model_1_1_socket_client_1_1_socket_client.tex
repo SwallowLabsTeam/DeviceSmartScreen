@@ -1,0 +1,115 @@
+\hypertarget{classorg_1_1swallow__labs_1_1model_1_1_socket_client_1_1_socket_client}{}\section{org.\+swallow\+\_\+labs.\+model.\+Socket\+Client.\+Socket\+Client Class Reference}
+\label{classorg_1_1swallow__labs_1_1model_1_1_socket_client_1_1_socket_client}\index{org.\+swallow\+\_\+labs.\+model.\+Socket\+Client.\+Socket\+Client@{org.\+swallow\+\_\+labs.\+model.\+Socket\+Client.\+Socket\+Client}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classorg_1_1swallow__labs_1_1model_1_1_socket_client_1_1_socket_client_a93c4e3fa3ba99d54ba6aeb4fcc0ed428}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, id\+\_\+client, address, port)
+\item 
+def \hyperlink{classorg_1_1swallow__labs_1_1model_1_1_socket_client_1_1_socket_client_a21bd0234ae774f05382d4d3453901bb8}{check\+\_\+port} (self)
+\item 
+def \hyperlink{classorg_1_1swallow__labs_1_1model_1_1_socket_client_1_1_socket_client_acae8c7c1b45d7a872c81483d338c5547}{push} (self, capsule)
+\item 
+def \hyperlink{classorg_1_1swallow__labs_1_1model_1_1_socket_client_1_1_socket_client_a537cb3609071c02e9f1114fc6f57105e}{pull} (self)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classorg_1_1swallow__labs_1_1model_1_1_socket_client_1_1_socket_client_a259852110cb3e5dbf4aeb353806bf09e}{}{\bfseries id\+\_\+client}\label{classorg_1_1swallow__labs_1_1model_1_1_socket_client_1_1_socket_client_a259852110cb3e5dbf4aeb353806bf09e}
+
+\item 
+\hypertarget{classorg_1_1swallow__labs_1_1model_1_1_socket_client_1_1_socket_client_af1d5ea9c128d59a3d92678fdd44a8bce}{}{\bfseries address}\label{classorg_1_1swallow__labs_1_1model_1_1_socket_client_1_1_socket_client_af1d5ea9c128d59a3d92678fdd44a8bce}
+
+\item 
+\hypertarget{classorg_1_1swallow__labs_1_1model_1_1_socket_client_1_1_socket_client_a4623d6e991ae9f63c1829e0929dc709c}{}{\bfseries port}\label{classorg_1_1swallow__labs_1_1model_1_1_socket_client_1_1_socket_client_a4623d6e991ae9f63c1829e0929dc709c}
+
+\item 
+\hypertarget{classorg_1_1swallow__labs_1_1model_1_1_socket_client_1_1_socket_client_aeab713d38e3db149b7d037bec30a3c43}{}{\bfseries socket}\label{classorg_1_1swallow__labs_1_1model_1_1_socket_client_1_1_socket_client_aeab713d38e3db149b7d037bec30a3c43}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classorg_1_1swallow__labs_1_1model_1_1_socket_client_1_1_socket_client_adae69670203178ce48555e08638215f7}{}tuple {\bfseries my\+\_\+logger} = Logger\+Adapter(Parser.\+get\+\_\+client\+\_\+log\+\_\+param())\label{classorg_1_1swallow__labs_1_1model_1_1_socket_client_1_1_socket_client_adae69670203178ce48555e08638215f7}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Class creating a SocketClient object:
+
+G{classtree}
+
+DESCRIPTION
+===========
+Create a SocketClient
+
+RETURN
+======
+Return a SocketClient
+
+@param id_client : a client id
+@param address : ip address of the host the client is connecting to
+@param port: port of the host the client is connecting to
+@ivar self.id_client : a client id
+@ivar self.address : ip address:server adresse the client is connecting to
+@ivar self.port : port of the host the client is connecting to
+@ivar self.socket: the socket enabling the connection\end{DoxyVerb}
+ 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classorg_1_1swallow__labs_1_1model_1_1_socket_client_1_1_socket_client_a93c4e3fa3ba99d54ba6aeb4fcc0ed428}{}\index{org\+::swallow\+\_\+labs\+::model\+::\+Socket\+Client\+::\+Socket\+Client@{org\+::swallow\+\_\+labs\+::model\+::\+Socket\+Client\+::\+Socket\+Client}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!org\+::swallow\+\_\+labs\+::model\+::\+Socket\+Client\+::\+Socket\+Client@{org\+::swallow\+\_\+labs\+::model\+::\+Socket\+Client\+::\+Socket\+Client}}
+\subsubsection[{\+\_\+\+\_\+init\+\_\+\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}def org.\+swallow\+\_\+labs.\+model.\+Socket\+Client.\+Socket\+Client.\+\_\+\+\_\+init\+\_\+\+\_\+ (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{id\+\_\+client, }
+\item[{}]{address, }
+\item[{}]{port}
+\end{DoxyParamCaption}
+)}\label{classorg_1_1swallow__labs_1_1model_1_1_socket_client_1_1_socket_client_a93c4e3fa3ba99d54ba6aeb4fcc0ed428}
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+\subsection{Member Function Documentation}
+\hypertarget{classorg_1_1swallow__labs_1_1model_1_1_socket_client_1_1_socket_client_a21bd0234ae774f05382d4d3453901bb8}{}\index{org\+::swallow\+\_\+labs\+::model\+::\+Socket\+Client\+::\+Socket\+Client@{org\+::swallow\+\_\+labs\+::model\+::\+Socket\+Client\+::\+Socket\+Client}!check\+\_\+port@{check\+\_\+port}}
+\index{check\+\_\+port@{check\+\_\+port}!org\+::swallow\+\_\+labs\+::model\+::\+Socket\+Client\+::\+Socket\+Client@{org\+::swallow\+\_\+labs\+::model\+::\+Socket\+Client\+::\+Socket\+Client}}
+\subsubsection[{check\+\_\+port}]{\setlength{\rightskip}{0pt plus 5cm}def org.\+swallow\+\_\+labs.\+model.\+Socket\+Client.\+Socket\+Client.\+check\+\_\+port (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}\label{classorg_1_1swallow__labs_1_1model_1_1_socket_client_1_1_socket_client_a21bd0234ae774f05382d4d3453901bb8}
+\begin{DoxyVerb}DESCRIPTION
+===========
+Method check if the port server is open or not
+\end{DoxyVerb}
+ \hypertarget{classorg_1_1swallow__labs_1_1model_1_1_socket_client_1_1_socket_client_a537cb3609071c02e9f1114fc6f57105e}{}\index{org\+::swallow\+\_\+labs\+::model\+::\+Socket\+Client\+::\+Socket\+Client@{org\+::swallow\+\_\+labs\+::model\+::\+Socket\+Client\+::\+Socket\+Client}!pull@{pull}}
+\index{pull@{pull}!org\+::swallow\+\_\+labs\+::model\+::\+Socket\+Client\+::\+Socket\+Client@{org\+::swallow\+\_\+labs\+::model\+::\+Socket\+Client\+::\+Socket\+Client}}
+\subsubsection[{pull}]{\setlength{\rightskip}{0pt plus 5cm}def org.\+swallow\+\_\+labs.\+model.\+Socket\+Client.\+Socket\+Client.\+pull (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}\label{classorg_1_1swallow__labs_1_1model_1_1_socket_client_1_1_socket_client_a537cb3609071c02e9f1114fc6f57105e}
+\begin{DoxyVerb}DESCRIPTION
+===========
+Method allowing the client to pull the messages that concern him from the broker
+
+@rtype: List
+\end{DoxyVerb}
+ \hypertarget{classorg_1_1swallow__labs_1_1model_1_1_socket_client_1_1_socket_client_acae8c7c1b45d7a872c81483d338c5547}{}\index{org\+::swallow\+\_\+labs\+::model\+::\+Socket\+Client\+::\+Socket\+Client@{org\+::swallow\+\_\+labs\+::model\+::\+Socket\+Client\+::\+Socket\+Client}!push@{push}}
+\index{push@{push}!org\+::swallow\+\_\+labs\+::model\+::\+Socket\+Client\+::\+Socket\+Client@{org\+::swallow\+\_\+labs\+::model\+::\+Socket\+Client\+::\+Socket\+Client}}
+\subsubsection[{push}]{\setlength{\rightskip}{0pt plus 5cm}def org.\+swallow\+\_\+labs.\+model.\+Socket\+Client.\+Socket\+Client.\+push (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{capsule}
+\end{DoxyParamCaption}
+)}\label{classorg_1_1swallow__labs_1_1model_1_1_socket_client_1_1_socket_client_acae8c7c1b45d7a872c81483d338c5547}
+\begin{DoxyVerb}DESCRIPTION
+===========
+Method providing a way for the client to send messages through the broker
+
+@param capsule : the capsule to send\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/root/\+Pycharm\+Projects/\+Chanel\+Project/org/swallow\+\_\+labs/model/Socket\+Client.\+py\end{DoxyCompactItemize}

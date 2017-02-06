@@ -1,0 +1,15 @@
+{
+  "reservation_root_directory" : "/reservation",
+  "segment_duration_min":10,
+  "standard_json_file" : "../conf/Planning.json",
+  "sftp":{
+    "host" : "server.swallow.tn",
+    "private_key_path":"../conf/Key_Device",
+    "username":"device",
+    "video_directory":"/home/device/video/",
+    "photo_directory":"/home/device/photo/"
+
+  },
+  "video_extension":["mp4","avi","divx","mpg"],
+  "photo_extension":["png", "jpg"]
+}

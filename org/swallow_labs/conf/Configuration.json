@@ -1,0 +1,66 @@
+{
+  "net_param":
+  {
+    "front_end": [
+      5001,
+      5002,
+      5003,
+      5004
+    ],
+    "back_end": [
+      6001,
+      6002,
+      6003,
+      6004
+    ],
+    "ip_add": [
+      "10.10.10.32",
+      "10.10.10.32",
+      "10.10.10.32",
+      "10.10.10.32"
+    ]
+  },
+  "log_param":
+  {
+    "broker":
+    {
+      "host": "10.10.10.88",
+      "port": 514,
+      "level": "DEBUG",
+      "facility": "local0",
+      "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    },
+    "capsule":
+    {
+      "host": "10.10.10.88",
+      "port": 514,
+      "level": "DEBUG",
+      "facility": "local2",
+      "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    },
+    "client":
+    {
+      "host": "10.10.10.88",
+      "port": 514,
+      "level": "DEBUG",
+      "facility": "local1",
+      "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    }
+  },
+  "snapshot_param":
+  {
+    "path":"/home/salmen"
+  },
+  "ldap_param":
+  {
+    "admin":"cn=directory manager",
+    "password":"salmenF03"
+  },
+ "client_id":
+  {
+    "salmen-ubuntu":"44",
+    "mahdi":"53",
+    "prototype.swallow.tn":"11"
+  }
+}
+

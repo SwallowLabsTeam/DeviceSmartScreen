@@ -1,0 +1,27 @@
+dn:AEmail=asallemi@swallow-labs.com,o=Administrators,o=WebApp,dc=swallow,dc=tn
+changetype:modify
+replace:AFirstName
+AFirstName:Mohamed
+-
+replace:ALastName
+ALastName:Sallemi
+-
+replace:AAdress
+AAdress:Route de tunis km 4.5 3031 Sfax Tunisie 
+-
+replace:userPassword
+userPassword:U2FsdGVkX18j+LcVhb0Usei2RtOFJ4VoC26eE+WD3Jo=
+-
+replace:APhone
+APhone:+21620710978
+-
+replace:ADateOfBirth
+ADateOfBirth:13/11/1991
+-
+replace:APicture
+APicture:/public/upload/users/1001
+-
+replace:ACIN
+ACIN:11860468
+-
+replace:ContractAdd
