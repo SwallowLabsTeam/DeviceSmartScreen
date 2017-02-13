@@ -354,7 +354,10 @@ class CapsuleProcessor:
     
         tree = TreeGenerator()
         print( tree.generate_set_list( tree.generate_list([self.cpl])))
-        tree.create_days( tree.generate_set_list( tree.generate_list([self.cpl])))
+        tree.planing_file(str(self.cpl.get_payload()["segment_duration_min"]))
+        tree.create_days( tree.generate_set_list( tree.generate_list([self.cpl])),str(self.cpl.get_payload()["segment_duration_min"]))
+ 
+
         
     def reservation(self):
         reserve = ReservationHandler()

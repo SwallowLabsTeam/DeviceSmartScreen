@@ -13,7 +13,7 @@ class TreeGenerator:
 
     
    
-    def create_day(self,date):
+    def create_day(self,date,time):
         print(date)
         year, month, day = date.split("-")
         with open('../conf/Configuration_Display.json') as json_config:
@@ -25,22 +25,28 @@ class TreeGenerator:
         d["planning"]["annee"] = str(year)
         d["planning"]["mois"] = str(month)
         d["planning"]["jour"] = str(day)
+        d["planning"]["segment_duration_min"] = str(time)
         if not os.path.exists(config['reservation_root_directory'] + "/" + str(year) + "/" + str(month) + "/" + str(day)):
             os.makedirs(config['reservation_root_directory'] + "/" + str(year) + "/" + str(month) + "/" + str(day))
+        else:
+            print("dellleeeeteee")
+            shutil.rmtree(config['reservation_root_directory'] + "/" + str(year) + "/" + str(month) + "/" + str(day))
+            os.makedirs(config['reservation_root_directory'] + "/" + str(year) + "/" + str(month) + "/" + str(day))
+            
         with open(config['reservation_root_directory'] + "/" + str(year) + "/" + str(month) + "/" + str(day) + "/Planning.json", "w") as output:
             os.utime(config['reservation_root_directory'] + "/" + str(year) + "/" + str(month) + "/" + str(day) + "/Planning.json", None)
             json.dump(d, output)
             output.close()
         for j in range(0, 24):
-            for i in range(0, 60, config['segment_duration_min']):
+            for i in range(0, 60, int(time)):
                 if not os.path.exists(config['reservation_root_directory'] + "/" + year + "/" + month + "/" + day + "/" + "{0:0=2d}".format(j) + "/" + "{0:0=2d}".format(i)):
                     os.makedirs(config['reservation_root_directory'] + "/" + year + "/" + month + "/" + day + "/" + "{0:0=2d}".format(j) + "/" + "{0:0=2d}".format(i))
                 pass
 
     
-    def create_days(self,set_list):
+    def create_days(self,set_list,time):
         for i in set_list:
-            self.create_day(i)
+            self.create_day(i,time)
 
     
     def generate_set_list(self,list_list):
@@ -101,4 +107,56 @@ class TreeGenerator:
                 return month2 + 1
         else:
             return month2 + 1
+    
+    def planing_file(self,time):
+        
+        lst_planing = []
+
+        x=60/int(time)
+
+        tt=0
+        creneau='[]'
+        cc=""
+        dataphoto = {}
+        dataphoto['id'] = ''
+        datavideo = {}
+        datavideo['id'] = ''
+       
+        
+        datacrenau = {}
+        datacrenau['id'] = 'value'
+        datacrenau['holder'] = 'swallow'
+        datacrenau['video'] = datavideo
+        datacrenau['photo'] = dataphoto
+
+        for i in range(int(x)):
+            if(tt<10):
+                t1="0"+str(tt)
+            else:
+                t1=str(tt)
+            datacrenau = {}
+            datacrenau['id'] = t1
+            datacrenau['holder'] = 'swallow'
+            datacrenau['video'] = datavideo
+            datacrenau['photo'] = dataphoto
+            
+            #c= '{"id": "'+t1+'","holder": "swallow","video": { "id": "" },"photo": { "id": "" }}'
+            
+            #lst_planing.append("{'id': '"+t1+"','holder': 'swallow','video': { 'id': '' },'photo': { 'id': '' }}")
+            lst_planing.append(datacrenau)
+            tt+=int(time)
+        print("1111111111111111111")
+        with open('../conf/Planning_file.json') as json_dataPlaning:
+            data = json.load(json_dataPlaning)
+            json_dataPlaning.close()
+        
+        print("goooooooooooooood")
+           
+        for i in range(24):
+            data["planning"]["heure"][i]["creneau"]=lst_planing
+       
+        print("modiiiiit:",data)
+        with open('../conf/Planning.json', 'w') as fichier:
+            json.dump(data, fichier, sort_keys=True, indent=4,
+                      ensure_ascii=False)
 

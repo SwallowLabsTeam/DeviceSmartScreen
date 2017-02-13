@@ -15,9 +15,10 @@ class ReservationHandler:
         with open(res_day_path, "r") as json_data:
             data = json.load(json_data)
             json_data.close()
-        data["planning"]["heure"][int(hour_id)]["creneau"][int(segment_id) // config["segment_duration_min"]]["holder"] = res_dict["holder"]
-        data["planning"]["heure"][int(hour_id)]["creneau"][int(segment_id) // config["segment_duration_min"]]["video"]["id"] = res_dict["video"]
-        data["planning"]["heure"][int(hour_id)]["creneau"][int(segment_id) // config["segment_duration_min"]]["photo"]["id"] = res_dict["photo"]
+        segment_duration = int(data["planning"]["segment_duration_min"])
+        data["planning"]["heure"][int(hour_id)]["creneau"][int(segment_id) // segment_duration]["holder"] = res_dict["holder"]
+        data["planning"]["heure"][int(hour_id)]["creneau"][int(segment_id) // segment_duration]["video"]["id"] = res_dict["video"]
+        data["planning"]["heure"][int(hour_id)]["creneau"][int(segment_id) // segment_duration]["photo"]["id"] = res_dict["photo"]
         with open(res_day_path, "w") as json_data:
             json.dump(data, json_data)
             json_data.close()

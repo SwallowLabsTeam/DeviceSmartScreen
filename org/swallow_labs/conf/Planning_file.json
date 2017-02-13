@@ -1,0 +1,106 @@
+{
+  "planning": {
+    "annee": "2016",
+    "mois": "08",
+    "jour": "31",
+    "segment_duration_min": "",
+    "heure": [
+      {
+        "id": "00",
+        "creneau":[]
+      },
+      {
+        "id": "01",
+        "creneau":[]
+      },
+      {
+        "id": "02",
+	"creneau":[]
+      },
+      {
+        "id": "03",
+	"creneau":[]
+      },
+      {
+        "id": "04",
+	"creneau":[]
+      },
+      {
+        "id": "05",
+	"creneau":[]
+      },
+      {
+        "id": "06",
+	"creneau":[]
+      },
+      {
+        "id": "07",
+	"creneau":[]
+      },
+      {
+        "id": "08",
+	"creneau":[]
+      },
+      {
+        "id": "09",
+        "creneau":[]
+      },
+      {
+        "id": "10",
+ 	"creneau":[]
+      },
+      {
+        "id": "11",
+	"creneau":[]
+      },
+      {
+        "id": "12",
+	"creneau":[]
+      },
+      {
+        "id": "13",
+	"creneau":[]
+      },
+      {
+        "id": "14",
+	"creneau":[]
+      },
+      {
+        "id": "15",
+	"creneau":[]
+      },
+      {
+        "id": "16",
+	"creneau":[]
+      },
+      {
+        "id": "17",
+	"creneau":[]
+      },
+      {
+        "id": "18",
+	"creneau":[]
+      },
+      {
+        "id": "19",
+	"creneau":[]
+      },
+      {
+        "id": "20",
+	"creneau":[]
+      },
+      {
+        "id": "21",
+	"creneau":[]
+      },
+      {
+        "id": "22",
+ 	"creneau":[]
+      },
+      {
+        "id": "23",
+	"creneau":[]
+      }
+    ]
+  }
+}
