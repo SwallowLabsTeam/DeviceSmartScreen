@@ -16,8 +16,22 @@ from DeleteGenerator import DeleteGenerator
 
 
 class Downloader:
+    """
+                DESCRIPTION
+                ===========
+                This method will download the video and photo file from the sftp server
+
+    
+    """
     @staticmethod
     def download_file(file_name, local_path):
+        """
+                DESCRIPTION
+                ===========
+                This method download files(video and photo)
+
+    
+        """
         with open("../conf/Configuration_Display.json") as json_data:
             config = json.load(json_data)
             json_data.close()
@@ -32,6 +46,7 @@ class Downloader:
             file_object.close()
         transport.connect(pkey=mykey, username=username)
 
+        
         sftp = paramiko.SFTPClient.from_transport(transport)
         null, file_extension = file_name.split(".")
         if file_extension in config["video_extension"]:
@@ -48,48 +63,55 @@ class Downloader:
 
     @staticmethod
     def download_day(planning_directory):
+        """
+                DESCRIPTION
+                ===========
+                This method get information file to download it
+
+    
+        """
         with open(planning_directory + "/Planning.json", "r") as json_data:
             planning = json.load(json_data)
             json_data.close()
         for i in planning["planning"]["heure"]:
             for j in i["creneau"]:
                 path = planning_directory + i["id"] + "/" + j["id"] + "/"
-                print('path: ',path)
-                print("video:: ",j["video"]["id"])
-                print("photo:: ",j["photo"]["id"])
                 video=j["video"]["id"]
                 photo = j["photo"]["id"]
                 if(video!=""):
                     Downloader.download_file(j["video"]["id"], path)
                 if(photo!=""):
                     Downloader.download_file(j["photo"]["id"], path)
-                    #Downloader.download_file(j["photo"]["id"], path)
     @staticmethod
     def change_planing_crontab(dd):
+        """
+                DESCRIPTION
+                ===========
+                This method set the time in the line how run loop video and photo
+
+    
+        """
+        # open planning.json file to get segment_duration_min value
         with open(dd+'/Planning.json') as data_file:    
             data = json.load(data_file)
-        pprint(data["planning"]["segment_duration_min"])
-        #os.system( "crontab -l > /root/test/crontabtime.txt")
+        #pprint(data["planning"]["segment_duration_min"])
+        #set crontab file
         file_path= "/var/spool/cron/root"
         f = open(file_path, 'r+b')   
         f_content = f.read()
         f.close()
         
-        
-        print("aaaaaaaaaaaaaa",f_content)  
         str1 = str(f_content)
-        print("aaaaaaaaaaaaaa",str1) 
+        #get the line to set it in crontab 
         nn = str1.find("/usr/local/bin/python3.5 /root/test/testaff.py &>> /home/user/testloop.txt")
-        print(nn)
         old1= str1[nn-14 : nn-10]
-        print("timea:",old1)
         
         
         old =old1+" * * * *\t/usr/local/bin/python3.5 /root/test/testaff.py &>> /home/user/testloop.txt"
-        print("timea:",old)
         new ="*/"+data["planning"]["segment_duration_min"]+" * * * *\t/usr/local/bin/python3.5 /root/test/testaff.py &>> /home/user/testloop.txt"
         print("new:",new)
         fh, abs_path = mkstemp()
+        # set the old line in crontab
         with open(abs_path,'w') as new_file:
             with open(file_path) as old_file:
                 for line in old_file:
@@ -102,30 +124,29 @@ class Downloader:
         os.system("systemctl restart crond")
         
 if __name__ == '__main__':
+    """
+                DESCRIPTION
+                ===========
+                This method to generate downloader step 
+
     
+    """
+    # delete previous date repository
     deleting = DeleteGenerator()
     deleting.__init__()
    
     
-    print (time.strftime("%H:%M:%S"))
-    print (time.strftime("%d/%m/%Y"))
+    #print (time.strftime("%H:%M:%S"))
+    #print (time.strftime("%d/%m/%Y"))
     
     i = datetime.datetime.now()
-     
-    print (i.year)
-    print (i.month)
-    print (i.day)
-    print (i.hour)
     heur = i.hour
-    #print ("miiiiiiiiiiii",i.minute//10*10)
-    creneau = (i.minute//10*10)//10
-    #print ("dddddddddddd",creneau)
-    #print (i.second)
+    # set month forme
     if(i.month<10):
         monthstr="0"+str(i.month)
     else:
         monthstr=str(i.month)
-    
+    #set day forme
     if(i.day<10):
         daystr="0"+str(i.day)
     else:
@@ -133,13 +154,14 @@ if __name__ == '__main__':
                 
     dd ="/reservation/"+str(i.year)+"/"+monthstr+"/"+daystr
     print(dd)
-    
+    # chage  execution time crontab  
     Downloader.change_planing_crontab(dd)
         
     
     folder_day=dd+"/"
-    print ("folder_day",folder_day)
+    #print ("folder_day",folder_day)
     #Downloader.download_day("/reservation/2017/02/03/")
+    # download files in folder day
     Downloader.download_day(folder_day)
     #Downloader.download_file("swallow-video.mp4", "/reservation/2016/09/07/00/10/")
 

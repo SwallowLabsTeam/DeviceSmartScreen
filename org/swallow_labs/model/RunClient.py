@@ -96,6 +96,8 @@ class RunClient:
          while (True):
              # loop for pull
              client_pull.pull()
+             for y in client_pull.pull_list:
+                 print("ttt",y.print_capsule())
              # client pull
              for x in client_pull.pull_list:
                  if(x.get_ACK()=="YES"):
@@ -108,9 +110,11 @@ class RunClient:
                          if(shared_dict['list_item'][i].get_id_capsule()==pld["id"]):
                              self.remove_capsule(i)
                              #remove capsule after verification payload
-                     client_pull.pull_list.pop(0)
+                     #client_pull.pull_list.pop(0)
+                     
                      # pop the treated capsule from the pull_list
                  else:
+                     print("kkkkkkk",x.print_capsule())
                      t = CapsuleProcessor(x)
                      # instantiate a CapsuleProcessor that will treat capsule
                      y = t.verif_msg()
@@ -119,14 +123,16 @@ class RunClient:
                          org.swallow_labs.model.SocketClient.my_logger.log_sendACK_verif(
                              str(x.id_capsule), str(
                                  client_pull.id_client))
-                         client_pull.pull_list.pop(0)
+                         #client_pull.pull_list.pop(0)
                          # pop the treated capsule from the pull_list
                      else:
                          t.treat(y)
                          #treat capsule
                      x.my_logger.log_treated_capsule(x)
                      # log that the capsule was treated
-                     client_pull.pull_list.pop(0)
+                     #client_pull.pull_list.pop(0)
+                 client_pull.pull_list=[] 
+                     
                      # pop the treated capsule from the pull_list
              time.sleep(3)
              print("list: ", shared_dict['list_item'])

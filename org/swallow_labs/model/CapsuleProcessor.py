@@ -351,7 +351,14 @@ class CapsuleProcessor:
     
     
     def tree_generator(self):
+        
+        """
+                DESCRIPTION
+                ===========
+                This method will create new repositorys
+
     
+        """
         tree = TreeGenerator()
         print( tree.generate_set_list( tree.generate_list([self.cpl])))
         tree.planing_file(str(self.cpl.get_payload()["segment_duration_min"]))
@@ -360,7 +367,18 @@ class CapsuleProcessor:
 
         
     def reservation(self):
+        """
+                DESCRIPTION
+                ===========
+                This method will create new reservations
+
+    
+        """
         reserve = ReservationHandler()
-        list=[self.cpl.get_payload()]        
-        reserve.book_multiple_segment(list)
+        print(type(self.cpl.get_payload()))
+        if(type(self.cpl.get_payload())==list):
+            liste=self.cpl.get_payload()
+        else:
+            liste = [self.cpl.get_payload()]    
+        reserve.book_multiple_segment(liste)
  
