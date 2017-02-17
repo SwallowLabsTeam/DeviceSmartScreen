@@ -14,10 +14,10 @@
       6004
     ],
     "ip_add": [
-      "10.10.10.32",
-      "10.10.10.32",
-      "10.10.10.32",
-      "10.10.10.32"
+      "127.0.1.1",
+      "127.0.1.1",
+      "127.0.1.1",
+      "127.0.1.1"
     ]
   },
   "log_param":
@@ -32,7 +32,7 @@
     },
     "capsule":
     {
-      "host": "10.10.10.88",
+      "host": "10.10.10.99",
       "port": 514,
       "level": "DEBUG",
       "facility": "local2",
@@ -40,10 +40,18 @@
     },
     "client":
     {
-      "host": "10.10.10.88",
+      "host": "10.10.10.25",
       "port": 514,
       "level": "DEBUG",
       "facility": "local1",
+      "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    },
+    "device":
+    {
+      "host": "10.10.10.88",
+      "port": 514,
+      "level": "DEBUG",
+      "facility": "local3",
       "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
     }
   },
@@ -58,9 +66,11 @@
   },
  "client_id":
   {
-    "salmen-ubuntu":"44",
-    "mahdi":"53",
-    "prototype.swallow.tn":"11"
+    "salmen-ubuntu":["10","11","7000"],
+    "mahdi":["40","41","7000"],
+    "akrem-X550JK":["20","21","7000"],
+    "prototype.swallow.tn":["30","31","7000"]
   }
 }
+
 

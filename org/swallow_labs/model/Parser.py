@@ -4,6 +4,7 @@ import ast
 from org.swallow_labs.model.BrokerData import BrokerData
 import socket
 
+
 class Parser:
     """
         Class creating a Parser object
@@ -25,6 +26,7 @@ class Parser:
     __broker_log_param = []
     __client_log_param = []
     __capsule_log_param = []
+    __device_log_param = []
     __snapshot_param = ''
     __ldap_param = []
     __client_id = ''
@@ -39,13 +41,14 @@ class Parser:
         for f in files_path_list:
             try:
                 Parser.__data = {**Parser.__data, **json.loads(open(f).read())}
-                if 'Configuration.json' in f:
+                if '../conf/Configuration.json' in f:
                     try:
                         validate(json.loads(open(f).read()), schema)
                     except ValidationError:
                         pass
             except FileNotFoundError:
                 pass
+        
 
     @staticmethod
     def set_all():
@@ -53,10 +56,12 @@ class Parser:
         Parser.set_frontend_broker_list()
         Parser.set_broker_log_param()
         Parser.set_capsule_log_param()
+        Parser.set_device_log_param()
         Parser.set_client_log_param()
         Parser.set_snapshot_param()
         Parser.set_ldap_param()
         Parser.set_client_id()
+
     @staticmethod
     def set_backend_broker_list():
         try:
@@ -100,6 +105,18 @@ class Parser:
             pass
 
     @staticmethod
+    def set_device_log_param():
+        try:
+            Parser.__device_log_param = [Parser.__data['log_param']['device']['host'],
+                                         Parser.__data['log_param']['device']['port'],
+                                         Parser.__data['log_param']['device']['level'],
+                                         Parser.__data['log_param']['device']['facility'],
+                                         Parser.__data['log_param']['device']['format'],
+                                         "Device"]
+        except:
+            pass
+
+    @staticmethod
     def set_capsule_log_param():
         try:
             Parser.__capsule_log_param = [Parser.__data['log_param']['capsule']['host'],
@@ -129,7 +146,7 @@ class Parser:
     @staticmethod
     def set_client_id():
         try:
-            hostname=socket.gethostname()
+            hostname = socket.gethostname()
             Parser.__client_id = Parser.__data['client_id'][hostname]
 
         except:
@@ -152,6 +169,10 @@ class Parser:
         return Parser.__client_log_param
 
     @staticmethod
+    def get_device_log_param():
+        return Parser.__device_log_param
+
+    @staticmethod
     def get_capsule_log_param():
         return Parser.__capsule_log_param
 
@@ -167,8 +188,9 @@ class Parser:
     def get_client_id():
         return Parser.__client_id
 
-if __name__ == '__main__':
 
+if __name__ == '__main__':
     Parser()
+
 
 

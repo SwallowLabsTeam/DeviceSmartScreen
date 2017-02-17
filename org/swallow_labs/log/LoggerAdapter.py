@@ -95,6 +95,9 @@ class LoggerAdapter:
 
     def log_server_down(self):
         self.logger.warn('Server down')
+    
+    def log_download_device(self,arg1,arg2):
+        self.logger.info('download file {}  in folder {}'.format(arg1, arg2))
 
     def log_init_capsule(self, arg1, arg2, arg3):
         self.logger.info('Capsule {} created by {} and type {}'.format(arg1, arg2, arg3))

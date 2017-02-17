@@ -10,7 +10,8 @@ from shutil import move
 
 import os
 from DeleteGenerator import DeleteGenerator
-
+from org.swallow_labs.log.LoggerAdapter import LoggerAdapter
+from Parser import Parser
 
 
 
@@ -23,6 +24,9 @@ class Downloader:
 
     
     """
+    
+    global my_logger
+    my_logger = LoggerAdapter(Parser().get_device_log_param())
     @staticmethod
     def download_file(file_name, local_path):
         """
@@ -60,16 +64,12 @@ class Downloader:
         sftp.get(file_path, local_path)
         sftp.close()
         transport.close()
+        print("looooooooooooooooooooooooooooooooooooooooogggggggggggg")
+        my_logger.log_download_device(file_name, local_path)
 
     @staticmethod
     def download_day(planning_directory):
-        """
-                DESCRIPTION
-                ===========
-                This method get information file to download it
-
-    
-        """
+       
         with open(planning_directory + "/Planning.json", "r") as json_data:
             planning = json.load(json_data)
             json_data.close()
@@ -131,6 +131,7 @@ if __name__ == '__main__':
 
     
     """
+    
     # delete previous date repository
     deleting = DeleteGenerator()
     deleting.__init__()
@@ -155,7 +156,7 @@ if __name__ == '__main__':
     dd ="/reservation/"+str(i.year)+"/"+monthstr+"/"+daystr
     print(dd)
     # chage  execution time crontab  
-    Downloader.change_planing_crontab(dd)
+    #Downloader.change_planing_crontab(dd)
         
     
     folder_day=dd+"/"
