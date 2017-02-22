@@ -1,4 +1,7 @@
 import json
+from org.swallow_labs.log.LoggerAdapter import LoggerAdapter
+from org.swallow_labs.model.Parser import Parser
+
 
 
 class ReservationHandler:
@@ -9,6 +12,10 @@ class ReservationHandler:
 
     
         """
+        
+    global my_logger
+    my_logger = LoggerAdapter(Parser().get_device_log_param())
+    
     def __init__(self):
         pass
     
@@ -44,6 +51,8 @@ class ReservationHandler:
             print("segment",int(segment_id))
             print("segment_duration",segment_duration)
             print("index",int(segment_id) // segment_duration)
+        
+        my_logger.log_Reservation_info(res_day_path)
 
     
     def book_multiple_segment(self,res_dict):

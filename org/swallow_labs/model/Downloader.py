@@ -9,9 +9,9 @@ from tempfile import mkstemp
 from shutil import move
 
 import os
-from DeleteGenerator import DeleteGenerator
+from org.swallow_labs.model.DeleteGenerator import DeleteGenerator
 from org.swallow_labs.log.LoggerAdapter import LoggerAdapter
-from Parser import Parser
+from org.swallow_labs.model.Parser import Parser
 
 
 
@@ -33,6 +33,9 @@ class Downloader:
                 DESCRIPTION
                 ===========
                 This method download files(video and photo)
+                - get configuration to connect on sftp server
+                - get directory video and photo 
+                - lunch download file
 
     
         """
@@ -61,11 +64,21 @@ class Downloader:
         local_path += file_name
         print("localpath = ", local_path)
         print("file_path = ", file_path)
-        sftp.get(file_path, local_path)
-        sftp.close()
-        transport.close()
-        print("looooooooooooooooooooooooooooooooooooooooogggggggggggg")
-        my_logger.log_download_device(file_name, local_path)
+        try:
+            print("ffffffffffffff",sftp.stat(file_path))
+        #error file not exist in sftp server
+        except IOError:
+            print('ereuuuuuuuur  looooooooggggg')
+            my_logger.log_download_device_error(file_name, local_path)
+        # file exist in server and run get and log 
+        else:
+            print("get",sftp.get(file_path, local_path))
+        
+            sftp.close()
+            transport.close()
+            
+            my_logger.log_download_device_info(file_name, local_path)
+            print("looooooooooooooooooooooooooooooooooooooooogggggggggggg")
 
     @staticmethod
     def download_day(planning_directory):

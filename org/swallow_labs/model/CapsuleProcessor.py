@@ -14,6 +14,9 @@ from subprocess import *
 from org.swallow_labs.model.TreeGenerator import *
 from org.swallow_labs.model.ReservationHandler import *
 
+
+
+
 class CapsuleProcessor:
 
     """
@@ -29,6 +32,9 @@ class CapsuleProcessor:
         @type cpl     : Capsule
 
     """
+    
+  
+    
     ldap_param = LdapParam()
     # load ldap connexion param
     list_capsuleACK_all_msg = []
@@ -64,12 +70,12 @@ class CapsuleProcessor:
             # Run the method that treat the LDAP_DEL_MSG capsule
         elif self.cpl.get_sort() == CapsuleSort.TREE_GENERATOR:
         # Test the sort of capsule
-            self.tree_generator()
-            # Run the method that treat the LDAP_DEL_MSG capsule
+            self.tree_generator(obj_ACK)
+            # Run the method that treat the TREE_GENERATOR capsule
         elif self.cpl.get_sort() == CapsuleSort.RESERVATION_MESSAGE:
         # Test the sort of capsule
-            self.reservation()
-            # Run the method that treat the LDAP_DEL_MSG capsule
+            self.reservation(obj_ACK)
+            # Run the method that treat the RESERVATION capsule
 
     def verif_msg(self):
         """
@@ -350,7 +356,7 @@ class CapsuleProcessor:
                     # add error log when we have an error syntax form the web
     
     
-    def tree_generator(self):
+    def tree_generator(self,objACK):
         
         """
                 DESCRIPTION
@@ -363,10 +369,17 @@ class CapsuleProcessor:
         print( tree.generate_set_list( tree.generate_list([self.cpl])))
         tree.planing_file(str(self.cpl.get_payload()["segment_duration_min"]))
         tree.create_days( tree.generate_set_list( tree.generate_list([self.cpl])),str(self.cpl.get_payload()["segment_duration_min"]))
+        
+        # Test if the entry is deleted succeful
+        f = self.list_capsuleACK_all_msg.index(objACK)
+        self.list_capsuleACK_all_msg[f].status = "YES"
+        # Change status capsule Ack
+        self.sendACK(CapsuleSort.TREE_GENERATOR_POSITIF, self.cpl.id_capsule, self.cpl.id_sender)
+        # send positif ACK
  
 
         
-    def reservation(self):
+    def reservation(self,objACK):
         """
                 DESCRIPTION
                 ===========
@@ -381,4 +394,12 @@ class CapsuleProcessor:
         else:
             liste = [self.cpl.get_payload()]    
         reserve.book_multiple_segment(liste)
+       
+        
+        # Test if the entry is deleted succeful
+        f = self.list_capsuleACK_all_msg.index(objACK)
+        self.list_capsuleACK_all_msg[f].status = "YES"
+        # Change status capsule Ack
+        self.sendACK(CapsuleSort.RESERVATION_MESSAGE_POSITIF, self.cpl.id_capsule, self.cpl.id_sender)
+        # send positif ACK
  

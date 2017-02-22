@@ -95,9 +95,18 @@ class LoggerAdapter:
 
     def log_server_down(self):
         self.logger.warn('Server down')
+        
+    def log_Reservation_info(self,arg1):
+        self.logger.info('Reservation file {} '.format(arg1))
     
-    def log_download_device(self,arg1,arg2):
+    def log_TreeGenerator_info(self,arg1,arg2):
+        self.logger.info('generate start day folder {}  and last day folder {}'.format(arg1, arg2))
+        
+    def log_download_device_info(self,arg1,arg2):
         self.logger.info('download file {}  in folder {}'.format(arg1, arg2))
+        
+    def log_download_device_error(self,arg1,arg2):
+        self.logger.error('download file {}  in folder {}'.format(arg1, arg2))
 
     def log_init_capsule(self, arg1, arg2, arg3):
         self.logger.info('Capsule {} created by {} and type {}'.format(arg1, arg2, arg3))
