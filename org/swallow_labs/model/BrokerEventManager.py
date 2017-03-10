@@ -1,6 +1,6 @@
 import zmq
 from org.swallow_labs.model.Capsule import Capsule
-from org.swallow_labs.model.Parser import Parser
+#from org.swallow_labs.model.Parser import Parser
 from  org.swallow_labs.model.Client import *
 from org.swallow_labs.model.SendProcessor import *
 import json

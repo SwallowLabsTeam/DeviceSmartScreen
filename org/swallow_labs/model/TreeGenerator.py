@@ -1,17 +1,21 @@
 import json
 import os
 from calendar import monthrange
+import shutil
 
-
+from org.swallow_labs.log.LoggerAdapter import LoggerAdapter
+from org.swallow_labs.model.Parser import Parser
 
 class TreeGenerator:
     
+    global my_logger
+    my_logger = LoggerAdapter(Parser.get_device_log_param())
     
     def __init__(self):
         pass
         
 
-    
+
    
     def create_day(self,date,time):
         print(date)
@@ -47,6 +51,7 @@ class TreeGenerator:
     def create_days(self,set_list,time):
         for i in set_list:
             self.create_day(i,time)
+        my_logger.log_TreeGenerator_info(set_list[0], set_list[-1])
 
     
     def generate_set_list(self,list_list):

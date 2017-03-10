@@ -44,6 +44,10 @@ class RunClient:
         #control process objects
         global shared_dict
         shared_dict = manager.dict()
+        print("ouuuuh", self.list_address)
+        for y in Parser().get_backend_broker_list():
+         print("add ",y.address)
+         print("addd ",y.port)
         #dic how shared memory
         shared_dict['list_item'] = list()
         #list of items dec shared
@@ -51,6 +55,9 @@ class RunClient:
         self.event=BrokerEventManager(self.id_event)
         global client_pull
         client_pull = Client(self.id_client, self.list_address)
+   
+        print("szsssddsz",client_pull.nbr_broker)
+        print("saqaqaqaqqqqqqqzsz",client_pull.sock_list)
         global client_push
         client_push = Client(self.id_client_push, self.list_address)
         client_push.generate()
@@ -91,11 +98,14 @@ class RunClient:
         Method that run a client stub and pull capsule in loop
 
          """
-
+         print("id client",  client_pull.id_client)
          client_pull.generate()
          while (True):
+             
+          
              # loop for pull
              client_pull.pull()
+             
              for y in client_pull.pull_list:
                  print("ttt",y.print_capsule())
              # client pull
@@ -124,21 +134,21 @@ class RunClient:
                              str(x.id_capsule), str(
                                  client_pull.id_client))
                          #client_pull.pull_list.pop(0)
-                         # pop the treated capsule from the pull_list
+                          # pop the treated capsule from the pull_list
                      else:
                          t.treat(y)
                          #treat capsule
                      x.my_logger.log_treated_capsule(x)
                      # log that the capsule was treated
                      #client_pull.pull_list.pop(0)
-                 client_pull.pull_list=[] 
-                     
+                 client_pull.pull_list.pop(0)
+                 
                      # pop the treated capsule from the pull_list
              time.sleep(3)
              print("list: ", shared_dict['list_item'])
              for hd in shared_dict['list_item']:
-                 print(hd.print_capsule())
-                 #print capsules in list item
+                   print(hd.print_capsule())
+             #print capsules in list item
 
 
 

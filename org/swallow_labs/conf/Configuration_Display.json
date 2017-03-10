@@ -6,8 +6,7 @@
     "host" : "server.swallow.tn",
     "private_key_path":"../conf/Key_Device",
     "username":"device",
-    "video_directory":"/home/device/video/",
-    "photo_directory":"/home/device/photo/"
+    "display_directory":"/home/device/display/"
 
   },
   "video_extension":["mp4","avi","divx","mpg"],

@@ -11,7 +11,7 @@ from pprint import pprint
 import json
 import os
 from calendar import monthrange
-from Capsule import Capsule
+from org.swallow_labs.model.Capsule import Capsule
 import shutil
 
 
@@ -35,7 +35,7 @@ class DeleteGenerator:
     def delete_month(month,year):
         print(month)
         
-        with open('Configuration_Display.json') as json_config:
+        with open('../conf/Configuration_Display.json') as json_config:
             config = json.load(json_config)
             json_config.close()
             

@@ -29,7 +29,7 @@ class EmergencyToolBox:
 
         """
         # Parse the config file and get the path
-        self.file_store = Parser().get_snapshot_param()
+        self.file_store = Parser.get_snapshot_param()
 
     def store(self, element_list, obj):
         """

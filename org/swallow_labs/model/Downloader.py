@@ -9,9 +9,9 @@ from tempfile import mkstemp
 from shutil import move
 
 import os
-from DeleteGenerator import DeleteGenerator
+from org.swallow_labs.model.DeleteGenerator import DeleteGenerator
 from org.swallow_labs.log.LoggerAdapter import LoggerAdapter
-from Parser import Parser
+from org.swallow_labs.model.Parser import Parser
 
 
 
@@ -28,7 +28,7 @@ class Downloader:
     global my_logger
     my_logger = LoggerAdapter(Parser().get_device_log_param())
     @staticmethod
-    def download_file(file_name, local_path):
+    def download_file(file_name, local_path,holder):
         """
                 DESCRIPTION
                 ===========
@@ -53,10 +53,8 @@ class Downloader:
         
         sftp = paramiko.SFTPClient.from_transport(transport)
         null, file_extension = file_name.split(".")
-        if file_extension in config["video_extension"]:
-            file_path = config["sftp"]["video_directory"] + file_name
-        else:
-            file_path = config["sftp"]["photo_directory"] + file_name
+        
+        file_path = config["sftp"]["display_directory"]+holder+"/"+ file_name
 
         local_path += file_name
         print("localpath = ", local_path)
@@ -65,7 +63,7 @@ class Downloader:
         sftp.close()
         transport.close()
         print("looooooooooooooooooooooooooooooooooooooooogggggggggggg")
-        my_logger.log_download_device(file_name, local_path)
+        my_logger.log_download_device_info(file_name, local_path)
 
     @staticmethod
     def download_day(planning_directory):
@@ -78,10 +76,11 @@ class Downloader:
                 path = planning_directory + i["id"] + "/" + j["id"] + "/"
                 video=j["video"]["id"]
                 photo = j["photo"]["id"]
+                holder=j["holder"]
                 if(video!=""):
-                    Downloader.download_file(j["video"]["id"], path)
+                    Downloader.download_file(j["video"]["id"], path,holder)
                 if(photo!=""):
-                    Downloader.download_file(j["photo"]["id"], path)
+                    Downloader.download_file(j["photo"]["id"], path,holder)
     @staticmethod
     def change_planing_crontab(dd):
         """
@@ -133,6 +132,8 @@ if __name__ == '__main__':
     """
     
     # delete previous date repository
+    
+    print('delate')
     deleting = DeleteGenerator()
     deleting.__init__()
    
@@ -156,7 +157,7 @@ if __name__ == '__main__':
     dd ="/reservation/"+str(i.year)+"/"+monthstr+"/"+daystr
     print(dd)
     # chage  execution time crontab  
-    #Downloader.change_planing_crontab(dd)
+    Downloader.change_planing_crontab(dd)
         
     
     folder_day=dd+"/"
